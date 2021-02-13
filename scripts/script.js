@@ -6,5 +6,5 @@ window.addEventListener('DOMContentLoaded', () => {
     .then(data => localStorage.setItem("array", JSON.stringify(data)));
 
   var arr = JSON.parse(localStorage.getItem("array"));
-  console.log(arr);
+//  console.log(arr);
 });
