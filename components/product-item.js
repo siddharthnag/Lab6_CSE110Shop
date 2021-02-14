@@ -2,7 +2,7 @@
 
 class ProductItem extends HTMLElement {
 
-  constructor(id, img, title, price, present) {
+  constructor(id, image, title, price, present) {
 
     super();
     this.root = this.attachShadow( { mode: "open" });
