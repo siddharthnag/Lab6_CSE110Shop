@@ -2,19 +2,13 @@
 
 window.addEventListener('DOMContentLoaded', () => {
   
-/*  if (localStorage.getItem("data") == null) {
+  if (localStorage.getItem("data") == null) {
     fetch("https://fakestoreapi.com/products")
       .then(response => response.json())
       .then(data => localStorage.setItem("data", JSON.stringify(data)));
-  }*/
-  
-  if (localStorage.getItem("data") == null) {
-    const res = await fetch('https://fakestoreapi.com/products');
-    let products = await res.json();
-    localStorage.setItem('data', JSON.stringify(data));
-  } else {
-    let products = JSON.parse(localStorage.getItem("data"))
   }
+  
+  console.log(data);
 
   let products = JSON.parse(localStorage.getItem("data"));
   let productList = document.getElementById("product-list");
