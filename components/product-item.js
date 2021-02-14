@@ -97,10 +97,10 @@ class ProductItem extends HTMLElement {
       button.textContent = "Add to Cart";
     }
 
-    itemImage.appendChild(itemImage);
-    itemImage.appendChild(itemTitle);
-    itemImage.appendChild(itemPrice);
-    itemImage.appendChild(button);
+    item.appendChild(itemImage);
+    item.appendChild(itemTitle);
+    item.appendChild(itemPrice);
+    item.appendChild(button);
 
     button.addEventListener("click", () => {
       let size = document.getElementById("cart-count");
