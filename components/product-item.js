@@ -1,15 +1,11 @@
 // product-item.js
 
 class ProductItem extends HTMLElement {
-/*  constructor() {
-    const productItem = document.createElement("productItem");
-    productItem.innerHTML = 
-      `<img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" alt="Fjallraven - Foldstack No. 1 Backpack, Fits 15 Laptops" width=200>
-      <p class="title">Fjallraven - Foldstack No. 1 Backpack, Fits 15 Laptops</p>
-      <p class="price">$109.95</p>
-      <button onclick="alert('Added to Cart!')">Add to Cart</button>
-      
-      <style>
+  constructor(id, img, title, price, present) {
+    super();
+    this.root = this.attachShadow( { mode: "open" });
+    this.root.innerHTML = 
+      `<style>
         .price {
           color: green;
           font-size: 1.8em;
@@ -23,10 +19,10 @@ class ProductItem extends HTMLElement {
           border-radius: 5px;
           display: grid;
           grid-template-areas: 
-          'image'
-          'title'
-          'price'
-          'add';
+          "image"
+          "title"
+          "price"
+          "add";
           grid-template-rows: 67% 11% 11% 11%;
           height: 450px;
           filter: drop-shadow(0px 0px 6px rgb(0,0,0,0.2));
@@ -75,10 +71,58 @@ class ProductItem extends HTMLElement {
         }
       </style>`
     ;
-    super();
-    this.root = this.attachShadow( { mode: "open" });
+
+    const li = document.createElement("li");
+    li.setAttribute("class", "product");
+
+    const img = document.createElement("img");
+    img.setAttribute("src", image);
+    img.setAttribute("alt", title);
+    img.width = 200;
+
+    const title = document.createElement("p");
+    title.setAttribute("class", "title");
+    title.textContent = title;
+
+    const price = document.createElement("p");
+    price.setAttribute("class", "price");
+    price.textContent = "$" + price;
+
+    const button = document.createElement("button");
+    if (present) {
+      button.textContent = "Remove from Cart";
+    } else {
+      button.textContent = "Add to Cart";
+    }
+
+    li.appendChild(img);
+    li.appendChild(title);
+    li.appendChild(price);
+    li.appendChild(button);
+
+    button.addEventListener("click", () => {
+      let size = document.getElementById("cart-count");
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      if (cart == null) {
+        cart = [];
+      }
+      if (button.textContent == "Add to Cart") {
+        size.textContent = parseInt(size.textContent) + 1;
+        cart.push(id);
+        alert("Added to Cart!");
+        button.textContent = "Remove from Cart";
+      } else {
+        size.textContent = parseInt(size.textContent) - 1;
+        cart.splice(cart.indexOf(id),1);
+        alert("Added to Cart!");
+        button.textContent = "Add to Cart";
+      }
+      localStorage.setItem('size', JSON.stringify(size.textContent));
+      localStorage.setItem('cart', JSON.stringify(cart));
+    })
+    this.root.append(li);
     
-  }*/
+  }
 }
 
-customElements.define('product-item', ProductItem);
+customElements.define("product-item", ProductItem);
