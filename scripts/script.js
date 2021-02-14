@@ -7,8 +7,6 @@ window.addEventListener('DOMContentLoaded', () => {
       .then(response => response.json())
       .then(data => localStorage.setItem("data", JSON.stringify(data)));
   }
-  
-  console.log(data);
 
   let products = JSON.parse(localStorage.getItem("data"));
   let productList = document.getElementById("product-list");
