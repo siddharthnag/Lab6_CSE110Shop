@@ -74,21 +74,21 @@ class ProductItem extends HTMLElement {
       </style>`
     ;
 
-    const li = document.createElement("li");
-    li.setAttribute("class", "product");
+    const item = document.createElement("li");
+    item.setAttribute("class", "product");
 
-    const img = document.createElement("img");
-    img.setAttribute("src", image);
-    img.setAttribute("alt", title);
-    img.width = 200;
+    const itemImage = document.createElement("img");
+    itemImage.setAttribute("src", image);
+    itemImage.setAttribute("alt", title);
+    itemImage.width = 200;
 
-    const title = document.createElement("p");
-    title.setAttribute("class", "title");
-    title.textContent = title;
+    const itemTitle = document.createElement("p");
+    itemTitle.setAttribute("class", "title");
+    itemTitle.textContent = title;
 
-    const price = document.createElement("p");
-    price.setAttribute("class", "price");
-    price.textContent = "$" + price;
+    const itemPrice = document.createElement("p");
+    itemPrice.setAttribute("class", "price");
+    itemPrice.textContent = "$" + price;
 
     const button = document.createElement("button");
     if (present) {
@@ -97,10 +97,10 @@ class ProductItem extends HTMLElement {
       button.textContent = "Add to Cart";
     }
 
-    li.appendChild(img);
-    li.appendChild(title);
-    li.appendChild(price);
-    li.appendChild(button);
+    itemImage.appendChild(itemImage);
+    itemImage.appendChild(itemTitle);
+    itemImage.appendChild(itemPrice);
+    itemImage.appendChild(button);
 
     button.addEventListener("click", () => {
       let size = document.getElementById("cart-count");
@@ -122,7 +122,7 @@ class ProductItem extends HTMLElement {
       localStorage.setItem('size', JSON.stringify(size.textContent));
       localStorage.setItem('cart', JSON.stringify(cart));
     })
-    this.root.append(li);
+    this.root.append(item);
     
   }
 }
